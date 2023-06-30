@@ -1,7 +1,15 @@
 FROM node:lts-alpine3.18
 
-RUN mkdir /app
-COPY . /app
+RUN apk update && apk add git vim curl
+
 WORKDIR /app
 
-RUN apk update
+RUN npx create-next-app@latest . \
+      --typescript --tailwind --eslint --app --src-dir \
+      --import-alias --use-pnpm
+
+RUN git init
+
+COPY .env /app/
+
+WORKDIR /
