@@ -10,6 +10,8 @@ RUN npx create-next-app@latest . \
 
 RUN git init
 
-COPY .env /app/
+COPY .env /app/ 
+
+COPY ./.vscode/launch.json /app/.vscode/
 
 WORKDIR /
